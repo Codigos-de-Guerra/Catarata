@@ -3,6 +3,8 @@
 #include "write.h"
 #include "read.h"
 
+#define image_type unsigned char
+
 int main(int argc, char const *argv[]) {
 	//Testando se os argumentos minimos necessarios foram passados
 	if (argc < 7) {
@@ -11,7 +13,7 @@ int main(int argc, char const *argv[]) {
 	}
 
 	//Variaveis de controle para saber a posicao, no codigo, das informacoes procuradas
-	unsigned char inputAUX, formatoAUX, diagAUX;
+	image_type inputAUX, formatoAUX, diagAUX;
 
 	for (int i=0; i < argc; i++) {
 		//Checando onde eu encontro os comandos '-i' , '-o' , '-f'
@@ -31,12 +33,12 @@ int main(int argc, char const *argv[]) {
 		}
 	}
 
-	char *filepath = (char *) argv[inputAUX]; //Variavel que contem o nome da imagem+diretorio a ser processada
-	char *filename = (char *) tirar_diretorio_do_nome_da_imagem(filepath);
-	char *formato = (char *) argv[formatoAUX]; //Variavel que contem o nome do formato da imagem a ser processada
-	char *diagnostico = (char *) argv[diagAUX]; //Variavel que contem o nome do arquvio que contera o diagnostico
-	char *outdir = "out/";//Diretorio de saida das imagens imprimidas
-	char sn;//De sim ou nao
+	image_type *filepath = (char *) argv[inputAUX]; //Variavel que contem o nome da imagem+diretorio a ser processada
+	image_type *filename = (char *) tirar_diretorio_do_nome_da_imagem(filepath);
+	image_type *formato = (char *) argv[formatoAUX]; //Variavel que contem o nome do formato da imagem a ser processada
+	image_type *diagnostico = (char *) argv[diagAUX]; //Variavel que contem o nome do arquvio que contera o diagnostico
+	image_type *outdir = "out/";//Diretorio de saida das imagens imprimidas
+	image_type sn;//De sim ou nao
 	int x;
 
 	Imagem *originalImg = (Imagem *) ler_img(filename);
